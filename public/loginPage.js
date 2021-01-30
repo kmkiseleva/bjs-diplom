@@ -6,7 +6,7 @@ function callbackLogin(response) {
    if (response.success) {
       document.location.reload();
    } else {
-      userForm.setLoginErrorMessage(`${response.error}`);
+      userForm.setLoginErrorMessage(response.error);
    }
    console.log(response);
 }
@@ -15,7 +15,7 @@ function callbackRegister(response) {
    if (response.success) {
       document.location.reload();
    } else {
-      userForm.setRegisterErrorMessage(`${response.error}`);
+      userForm.setRegisterErrorMessage(response.error);
    }
    console.log(response);
 }

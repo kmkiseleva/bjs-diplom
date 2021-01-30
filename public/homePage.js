@@ -39,7 +39,7 @@ function callbackAddMoney(response) {
       ProfileWidget.showProfile(response.data);
       moneyMng.setMessage(response.success, "Баланс успешно пополнен!");
    } else {
-      moneyMng.setMessage(response.success, `${response.error}`);
+      moneyMng.setMessage(response.success, response.error);
    }
 }
 moneyMng.addMoneyCallback = (data) => {
@@ -52,7 +52,7 @@ function callbackConvertMoney(response) {
       ProfileWidget.showProfile(response.data);
       moneyMng.setMessage(response.success, "Валюта успешно конвертирована!");
    } else {
-      moneyMng.setMessage(response.success, `${response.error}`);
+      moneyMng.setMessage(response.success, response.error);
    }
 }
 moneyMng.conversionMoneyCallback = (data) => {
@@ -65,7 +65,7 @@ function callbackSendMoney(response) {
       ProfileWidget.showProfile(response.data);
       moneyMng.setMessage(response.success, "Валюта успешно переведена!");
    } else {
-      moneyMng.setMessage(response.success, `${response.error}`);
+      moneyMng.setMessage(response.success, response.error);
    }
 }
 moneyMng.sendMoneyCallback = (data) => {
@@ -93,7 +93,7 @@ function callbackAddFavorites(response) {
       moneyMng.updateUsersList(response.data);
       moneyMng.setMessage(response.success, "Пользователь успешно добавлен!");
    } else {
-      moneyMng.setMessage(response.success, `${response.error}`);
+      moneyMng.setMessage(response.success, response.error);
    }
    console.log(response);
 }
@@ -108,7 +108,7 @@ function callbackRemove(response) {
       moneyMng.updateUsersList(response.data);
       moneyMng.setMessage(response.success, "Пользователь успешно удален!");
    } else {
-      moneyMng.setMessage(response.success, `${response.error}`);
+      moneyMng.setMessage(response.success, response.error);
    }
 }
 favoritesWidget.removeUserCallback = (data) => {
