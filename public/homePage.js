@@ -37,10 +37,8 @@ const moneyMng = new MoneyManager();
 function callbackAddMoney(response) {
    if (response.success) {
       ProfileWidget.showProfile(response.data);
-      moneyMng.setMessage(response.success, "Баланс успешно пополнен!");
-   } else {
-      moneyMng.setMessage(response.success, response.error);
    }
+   moneyMng.setMessage(response.success, response.success ? "Баланс успешно пополнен!" : response.error);
 }
 moneyMng.addMoneyCallback = (data) => {
    ApiConnector.addMoney(data, callbackAddMoney);
@@ -50,10 +48,8 @@ moneyMng.addMoneyCallback = (data) => {
 function callbackConvertMoney(response) {
    if (response.success) {
       ProfileWidget.showProfile(response.data);
-      moneyMng.setMessage(response.success, "Валюта успешно конвертирована!");
-   } else {
-      moneyMng.setMessage(response.success, response.error);
    }
+   moneyMng.setMessage(response.success, response.success ? "Валюта успешно конвертирована!" : response.error);
 }
 moneyMng.conversionMoneyCallback = (data) => {
    ApiConnector.convertMoney(data, callbackConvertMoney);
@@ -63,10 +59,8 @@ moneyMng.conversionMoneyCallback = (data) => {
 function callbackSendMoney(response) {
    if (response.success) {
       ProfileWidget.showProfile(response.data);
-      moneyMng.setMessage(response.success, "Валюта успешно переведена!");
-   } else {
-      moneyMng.setMessage(response.success, response.error);
    }
+   moneyMng.setMessage(response.success, response.success ? "Валюта успешно переведена!" : response.error);
 }
 moneyMng.sendMoneyCallback = (data) => {
    ApiConnector.transferMoney(data, callbackSendMoney);
@@ -91,11 +85,8 @@ function callbackAddFavorites(response) {
       favoritesWidget.clearTable();
       favoritesWidget.fillTable(response.data);
       moneyMng.updateUsersList(response.data);
-      moneyMng.setMessage(response.success, "Пользователь успешно добавлен!");
-   } else {
-      moneyMng.setMessage(response.success, response.error);
    }
-   console.log(response);
+   moneyMng.setMessage(response.success, response.success ? "Пользователь успешно добавлен!" : response.error);
 }
 favoritesWidget.addUserCallback = (data) => {
    ApiConnector.addUserToFavorites(data, callbackAddFavorites);
@@ -106,10 +97,8 @@ function callbackRemove(response) {
       favoritesWidget.clearTable();
       favoritesWidget.fillTable(response.data);
       moneyMng.updateUsersList(response.data);
-      moneyMng.setMessage(response.success, "Пользователь успешно удален!");
-   } else {
-      moneyMng.setMessage(response.success, response.error);
    }
+   moneyMng.setMessage(response.success, response.success ? "Пользователь успешно удален!" : response.error);
 }
 favoritesWidget.removeUserCallback = (data) => {
    ApiConnector.removeUserFromFavorites(data, callbackRemove);
